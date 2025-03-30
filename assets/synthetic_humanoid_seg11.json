@@ -1,0 +1,8 @@
+{
+    "prompt": "A humanoid robot is strolling through a dimly lit, cyberpunk-style room with neon lights. The floor is constructed from black metallic panels with glowing LED strips, while the obstacles on the ground are built from reinforced carbon fiber. On the brick-textured wall, a graffiti mural features the number '51' in vibrant, glitch-art style alongside robotic faces.",
+    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

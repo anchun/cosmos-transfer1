@@ -1,0 +1,8 @@
+{
+    "prompt": "Inside a grand museum hall with soft track lighting, a quadruped robotic dog moves across a smooth, polished terrazzo floor. The marble steps lead to towering walls made of dark walnut wood, displaying large, framed Renaissance-style portraits of famous robotic inventors, androids, and historical automata.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

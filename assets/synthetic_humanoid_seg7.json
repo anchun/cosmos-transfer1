@@ -1,0 +1,8 @@
+{
+    "prompt": "A robotic figure moves steadily in a room illuminated by ambient pastel lighting. The floor is layered with polished cedar wood, and the obstacles include steps made of transparent acrylic. The exposed metal wall features an avant-garde painting with a large, illuminated '51' as its centerpiece.",
+    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

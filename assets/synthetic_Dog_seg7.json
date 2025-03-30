@@ -1,0 +1,8 @@
+{
+    "prompt": "A quadruped robotic dog is crawling inside an industrial-style room illuminated by cold, fluorescent lighting. The floor is made of rough concrete, and the ground steps consist of rusted iron plates. The walls, made of exposed steel beams, feature graffiti murals of robotic street art, drone swarms, and post-apocalyptic androids.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

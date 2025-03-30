@@ -1,0 +1,8 @@
+{
+    "prompt": "A humanoid robot is walking in a room with warm ambient lighting. The floor is made of polished granite, and the obstacles on the floor are crafted from oak wood. On the wall, an abstract painting prominently displays the number '51' alongside geometric shapes, all set against a smooth concrete surface.",
+    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

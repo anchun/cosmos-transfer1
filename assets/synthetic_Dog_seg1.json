@@ -1,0 +1,8 @@
+{
+    "prompt": "A quadruped robotic dog is crawling in a dimly lit room with deep red ambient lighting. The floor is made of rough stone, and the ground features steps crafted from dark mahogany wood. The walls, made of exposed brick, display vintage oil paintings of early mechanical robots, steam-powered machines, and airships.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

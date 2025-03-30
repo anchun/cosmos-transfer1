@@ -1,0 +1,8 @@
+{
+    "prompt": "A quadruped robotic dog slowly moves through a serene Zen-inspired room bathed in soft, golden light. The floor is covered with woven tatami mats, and the wooden steps blend seamlessly with the minimalist architecture. The walls, featuring traditional paper screens, are adorned with ink paintings of mechanical koi fish, robotic cranes, and cybernetic cherry blossoms.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

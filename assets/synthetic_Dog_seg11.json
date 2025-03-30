@@ -1,0 +1,8 @@
+{
+    "prompt": "A quadruped robotic dog is steadily moving across a sleek room lit by cool blue LED lights. The floor is made of high-gloss black granite, with strategically placed obstacles built from matte stainless steel. On a smooth glass wall, a digital art piece boldly presents the number '51' in a modern, glitch-inspired style.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

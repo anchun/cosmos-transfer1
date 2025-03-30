@@ -1,0 +1,8 @@
+{
+    "prompt": "A quadruped robotic dog is striding along a room accented with dynamic, multicolored LED lighting. The floor is made of intricately patterned terrazzo, while the obstacles are designed from modular polymer panels. On a reclaimed wooden wall, a mixed-media collage showcases various futuristic elements, with the number '51' strikingly highlighted in the center.",
+    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_Dog_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}

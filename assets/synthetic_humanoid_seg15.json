@@ -1,0 +1,8 @@
+{
+    "prompt": "A humanoid robot is striding through a minimalist, all-white room with gentle indirect lighting. The floor is made of smooth concrete, while the steps on the ground are shaped from transparent acrylic. A series of abstract paintings, including one with the number '51' in a geometric design, decorate the clean, matte-white wall.",
+    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
+        "control_weight": 1.0
+    }
+}
