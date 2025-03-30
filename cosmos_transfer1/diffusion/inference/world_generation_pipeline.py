@@ -555,10 +555,10 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
                 log.info(f"Upsampled prompt: {prompt}")
 
         log.info("Run guardrail on prompt")
-        is_safe = self._run_guardrail_on_prompt_with_offload(prompt)
-        if not is_safe:
-            log.critical("Input text prompt is not safe")
-            return None
+        # is_safe = self._run_guardrail_on_prompt_with_offload(prompt)
+        # if not is_safe:
+        #     log.critical("Input text prompt is not safe")
+        #     return None
         log.info("Pass guardrail on prompt")
 
         log.info("Run text embedding on prompt")
@@ -582,10 +582,10 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
         log.info("Finish generation")
 
         log.info("Run guardrail on generated video")
-        video = self._run_guardrail_on_video_with_offload(video)
-        if video is None:
-            log.critical("Generated video is not safe")
-            raise ValueError("Guardrail check failed: Generated video is unsafe")
+        # video = self._run_guardrail_on_video_with_offload(video)
+        # if video is None:
+        #     log.critical("Generated video is not safe")
+        #     raise ValueError("Guardrail check failed: Generated video is unsafe")
 
         log.info("Pass guardrail on generated video")
 

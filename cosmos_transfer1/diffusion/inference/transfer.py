@@ -214,7 +214,7 @@ def demo(cfg, control_inputs):
         checkpoint_name=checkpoint,
         offload_network=cfg.offload_diffusion_transformer,
         offload_text_encoder_model=cfg.offload_text_encoder_model,
-        offload_guardrail_models=cfg.offload_guardrail_models,
+        offload_guardrail_models=True,
         guidance=cfg.guidance,
         num_steps=cfg.num_steps,
         fps=cfg.fps,
