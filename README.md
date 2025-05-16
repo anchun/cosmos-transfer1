@@ -15,8 +15,11 @@ Cosmos-Transfer1 includes the following:
 - **ControlNet-based single modality conditional world generation** where a user can generate visual simulation based on one of the following modalities: segmentation video, depth video, edge video, blur video, LiDAR video, or HDMap video. Cosmos-Transfer1 generates a video based on the signal modality conditional input, a user text prompt, and, optionally, an input RGB video frame prompt (which could be from the last video generation result when operating in the autoregressive setting). We will use Cosmos-Transfer1-7B [Modality] to refer to the model operating in this setting. For example, Cosmos-Transfer1-7B [Depth] refers to a depth ControlNet model.
 - **MultiControlNet-based multimodal conditional world generation** where a user can generate visual simulation based on any combination of segmentation video, depth video, edge video, and blur video (LiDAR video and HDMap in the AV sample) with a spatiotemporal control map to control the stregnth of each modality across space and time. Cosmos-Transfer1 generates a video based on the multimodal conditional inputs, a user text prompt, and, optionally, an input RGB video frame prompt (This could be from the last video generation result when operating in the autoregressive setting.). This is the preferred mode of Cosmos-Transfer. We will refer it as Cosmos-Transfer1-7B.
 - **4KUpscaler** for upscaling a 720p-resolution video to a 4K-resolution video.
-- **Post-training scripts** for helping Physical AI builders post-train pre-trained Cosmos-Transfer1 for their applications [Coming soon].
-- **Pre-training scripts** for helping Physical AI builders train their own Cosmos-Transfer1 models from scratch [Coming soon].
+- **Post-training scripts** for helping Physical AI builders post-train pre-trained Cosmos-Transfer1 for their applications.
+- **Pre-training scripts** for helping Physical AI builders train their own Cosmos-Transfer1 models from scratch.
+
+## News
+- [2025/04] [Post training](README.md#post-train-pre-trained-cosmos-transfer1-models) is available! Now you can customize Transfer1 models in your own way. Please try it out and we look forward to your feedback.
 
 ## Example Model Behavior
 
@@ -45,32 +48,43 @@ Please refer to [INSTALL.md](INSTALL.md) for general instructions on environment
 * [Inference with pre-trained Cosmos-Transfer1-7B](/examples/inference_cosmos_transfer1_7b.md) **[with multi-GPU support]**
 * [Inference with pre-trained Cosmos-Transfer1-7B-Sample-AV](/examples/inference_cosmos_transfer1_7b_sample_av.md) **[with multi-GPU support]**
 * [Inference with pre-trained Cosmos-Transfer1-7B-4KUpscaler](/examples/inference_cosmos_transfer1_7b_4kupscaler.md) **[with multi-GPU support]**
-* Inference with pre-trained Cosmos-Transfer1-7B [Depth]: Coming soon
-* Inference with pre-trained Cosmos-Transfer1-7B [Segmentation]: Coming soon
-* Inference with pre-trained Cosmos-Transfer1-7B [Edge]: Coming soon
-* Inference with pre-trained Cosmos-Transfer1-7B [Vis]: Coming soon
+* [Inference with pre-trained Cosmos-Transfer1-7B (Depth)](examples/inference_cosmos_transfer1_7b_depth.md)
+* [Inference with pre-trained Cosmos-Transfer1-7B (Segmentation)](examples/inference_cosmos_transfer1_7b_seg.md)
+* [Inference with pre-trained Cosmos-Transfer1-7B (Edge)](examples/inference_cosmos_transfer1_7b.md#example-1-single-control-edge)
+* [Inference with pre-trained Cosmos-Transfer1-7B (Vis)](examples/inference_cosmos_transfer1_7b_vis.md)
 * [Inference with pre-trained Cosmos-Transfer1pt1-7B [Keypoint]](/examples/inference_cosmos_transfer1pt1_7b_keypoint.md)
+* Inference with pre-trained Cosmos-Transfer1-7B-Sample-AV-Multiview: Coming soon
 
 ### Post-train pre-trained Cosmos-Transfer1 models
 
-* Coming soon
+* [Post-train pre-trained Cosmos-Transfer1-7B [Depth | Edge | Keypoint | Segmentation | Vis]](examples/training_cosmos_transfer_7b.md) **[with multi-GPU support]**
+* [Post-train pre-trained Cosmos-Transfer1-7B-Sample-AV [LiDAR|HDMap]](examples/training_cosmos_transfer_7B_sample_AV.md) **[with multi-GPU support]**
+* Post-train pre-trained Cosmos-Transfer1-7B-Sample-AV-Multiview: Coming soon
 
 ### Build your own Cosmos-Transfer1 models from scratch
 
-* Coming soon
+* [Pre-train Cosmos-Transfer1-7B [Depth | Edge | Keypoint | Segmentation | Vis]](examples/training_cosmos_transfer_7b.md) **[with multi-GPU support]**
+* [Pre-train Cosmos-Transfer1-7B-Sample-AV [LiDAR|HDMap]](examples/training_cosmos_transfer_7B_sample_AV.md) **[with multi-GPU support]**
+* Pre-train Cosmos-Transfer1-7B-Sample-AV-Multiview: Coming soon
+
+### Workflow
+
+* Scene augmentation for robotic manipulation: Coming soon
 
 ## Cosmos-Transfer1 Models
 
 * [Cosmos-Transfer1-7B](https://huggingface.co/nvidia/Cosmos-Transfer1-7B): multimodal controllable conditional world generation with adaptive spatiotemporal control map. The supported modalities include segmentation, depth, canny edge, and blur visual.
-* [Cosmos-Transfer1-7B [Depth|Segmentation|Edge|Vis]](https://huggingface.co/nvidia/Cosmos-Transfer1-7B): single modality controllable conditional world generation. This refers to Cosmos-Transfer1-7B operates on the single modality case and is reduced to a ControlNet.
+* [Cosmos-Transfer1-7B [Depth | Edge | Keypoint | Segmentation | Vis]](https://huggingface.co/nvidia/Cosmos-Transfer1-7B): single modality controllable conditional world generation. This refers to Cosmos-Transfer1-7B operates on the single modality case and is reduced to a ControlNet.
 * [Cosmos-Transfer1-7B-Sample-AV](https://huggingface.co/nvidia/Cosmos-Transfer1-7B-Sample-AV): multimodal controllable conditional world generation with adaptive spatiotemporal control map specialized for autonomous vehicle applications. The supported modalities include LiDAR and HDMap.
-* [Cosmos-Transfer1-7B [LiDAR|HDMap]](https://huggingface.co/nvidia/Cosmos-Transfer1-7B-Sample-AV): single modality controllable conditional world generation for autonomous vehicle applications. This refers to Cosmos-Transfer1-7B-Sample-AV operates on the single modality case and is reduced to a ControlNet.
+* [Cosmos-Transfer1-7B [LiDAR | HDMap]](https://huggingface.co/nvidia/Cosmos-Transfer1-7B-Sample-AV): single modality controllable conditional world generation for autonomous vehicle applications. This refers to Cosmos-Transfer1-7B-Sample-AV operates on the single modality case and is reduced to a ControlNet.
 * [Cosmos-Transfer1-7B-4KUpscaler](https://huggingface.co/nvidia/Cosmos-Transfer1-7B-4KUpscaler): 4K upscaler to super-resolute 720p videos to 4K videos.
 
 
 ## License and Contact
 
 This project will download and install additional third-party open source software projects. Review the license terms of these open source projects before use.
+
+This model includes safety and content moderation features powered by Llama Guard 3. Llama Guard 3 is used solely as a content input filter and is subject to its own license.
 
 NVIDIA Cosmos source code is released under the [Apache 2 License](https://www.apache.org/licenses/LICENSE-2.0).
 

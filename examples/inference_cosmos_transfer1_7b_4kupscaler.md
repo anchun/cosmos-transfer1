@@ -16,7 +16,7 @@ Please refer to the Inference section of [INSTALL.md](/INSTALL.md#inference) for
 huggingface-cli login
 ```
 
-3. Accept the [LlamaGuard-7b terms](https://huggingface.co/meta-llama/LlamaGuard-7b)
+3. Accept the [Llama-Guard-3-8B terms](https://huggingface.co/meta-llama/Llama-Guard-3-8B)
 
 4. Download the Cosmos model weights from [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-transfer1-67c9d328196453be6e568d3e):
 
@@ -31,6 +31,13 @@ Note that this will require about 300GB of free storage. Not all these checkpoin
 ```
 checkpoints/
 ├── nvidia
+│   │
+│   ├── Cosmos-Guardrail1
+│   │   ├── README.md
+│   │   ├── blocklist/...
+│   │   ├── face_blur_filter/...
+│   │   └── video_content_safety_filter/...
+│   │
 │   ├── Cosmos-Transfer1-7B
 │   │   ├── base_model.pt
 │   │   ├── vis_control.pt
@@ -38,12 +45,7 @@ checkpoints/
 │   │   ├── seg_control.pt
 │   │   ├── depth_control.pt
 │   │   ├── 4kupscaler_control.pt
-│   │   ├── config.json
-│   │   └── guardrail
-│   │       ├── aegis/
-│   │       ├── blocklist/
-│   │       ├── face_blur_filter/
-│   │       └── video_content_safety_filter/
+│   │   └── config.json
 │   │
 │   ├── Cosmos-Transfer1-7B-Sample-AV/
 │   │   ├── base_model.pt
@@ -59,7 +61,8 @@ checkpoints/
 ├── depth-anything/...
 ├── facebook/...
 ├── google-t5/...
-└── IDEA-Research/
+├── IDEA-Research/...
+└── meta-llama/...
 ```
 
 ## Run Example
@@ -70,14 +73,16 @@ For a general overview of how to use the model see [this guide](/examples/infere
 Ensure you are at the root of the repository before executing the following:
 
 ```bash
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:=0}"
 export CHECKPOINT_DIR="${CHECKPOINT_DIR:=./checkpoints}"
-CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python cosmos_transfer1/diffusion/inference/transfer.py \
+export NUM_GPU="${NUM_GPU:=1}"
+CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) torchrun --nproc_per_node=$NUM_GPU --nnodes=1 --node_rank=0 cosmos_transfer1/diffusion/inference/transfer.py \
     --checkpoint_dir $CHECKPOINT_DIR \
     --video_save_folder outputs/inference_upscaler \
     --controlnet_specs assets/inference_upscaler.json \
     --num_steps 10 \
-    --offload_text_encoder_model
+    --offload_text_encoder_model \
+    --num_gpus $NUM_GPU
 ```
 
 You can also choose to run the inference on multiple GPUs as follows:

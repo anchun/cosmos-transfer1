@@ -16,7 +16,7 @@ Please refer to the Inference section of [INSTALL.md](/INSTALL.md#inference) for
 huggingface-cli login
 ```
 
-3. Accept the [LlamaGuard-7b terms](https://huggingface.co/meta-llama/LlamaGuard-7b)
+3. Accept the [Llama-Guard-3-8B terms](https://huggingface.co/meta-llama/Llama-Guard-3-8B)
 
 4. Download the Cosmos model weights from [Hugging Face](https://huggingface.co/collections/nvidia/cosmos-transfer1-67c9d328196453be6e568d3e):
 
@@ -31,6 +31,13 @@ Note that this will require about 300GB of free storage. Not all these checkpoin
 ```
 checkpoints/
 ├── nvidia
+│   │
+│   ├── Cosmos-Guardrail1
+│   │   ├── README.md
+│   │   ├── blocklist/...
+│   │   ├── face_blur_filter/...
+│   │   └── video_content_safety_filter/...
+│   │
 │   ├── Cosmos-Transfer1-7B
 │   │   ├── base_model.pt
 │   │   ├── vis_control.pt
@@ -38,12 +45,7 @@ checkpoints/
 │   │   ├── seg_control.pt
 │   │   ├── depth_control.pt
 │   │   ├── 4kupscaler_control.pt
-│   │   ├── config.json
-│   │   └── guardrail
-│   │       ├── aegis/
-│   │       ├── blocklist/
-│   │       ├── face_blur_filter/
-│   │       └── video_content_safety_filter/
+│   │   └── config.json
 │   │
 │   ├── Cosmos-Transfer1-7B-Sample-AV/
 │   │   ├── base_model.pt
@@ -59,7 +61,8 @@ checkpoints/
 ├── depth-anything/...
 ├── facebook/...
 ├── google-t5/...
-└── IDEA-Research/
+├── IDEA-Research/...
+└── meta-llama/...
 ```
 
 ## Run Example
@@ -73,16 +76,18 @@ Ensure you are at the root of the repository before executing the following:
 ```bash
 #!/bin/bash
 export PROMPT="The video is captured from a camera mounted on a car. The camera is facing forward. The video showcases a scenic golden-hour drive through a suburban area, bathed in the warm, golden hues of the setting sun. The dashboard camera captures the play of light and shadow as the sun’s rays filter through the trees, casting elongated patterns onto the road. The streetlights remain off, as the golden glow of the late afternoon sun provides ample illumination. The two-lane road appears to shimmer under the soft light, while the concrete barrier on the left side of the road reflects subtle warm tones. The stone wall on the right, adorned with lush greenery, stands out vibrantly under the golden light, with the palm trees swaying gently in the evening breeze. Several parked vehicles, including white sedans and vans, are seen on the left side of the road, their surfaces reflecting the amber hues of the sunset. The trees, now highlighted in a golden halo, cast intricate shadows onto the pavement. Further ahead, houses with red-tiled roofs glow warmly in the fading light, standing out against the sky, which transitions from deep orange to soft pastel blue. As the vehicle continues, a white sedan is seen driving in the same lane, while a black sedan and a white van move further ahead. The road markings are crisp, and the entire setting radiates a peaceful, almost cinematic beauty. The golden light, combined with the quiet suburban landscape, creates an atmosphere of tranquility and warmth, making for a mesmerizing and soothing drive."
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:=0}"
 export CHECKPOINT_DIR="${CHECKPOINT_DIR:=./checkpoints}"
-CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python cosmos_transfer1/diffusion/inference/transfer.py \
+export NUM_GPU="${NUM_GPU:=1}"
+CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) torchrun --nproc_per_node=$NUM_GPU --nnodes=1 --node_rank=0 cosmos_transfer1/diffusion/inference/transfer.py \
     --checkpoint_dir $CHECKPOINT_DIR \
     --video_save_name output_video \
     --video_save_folder outputs/sample_av_multi_control \
     --prompt "$PROMPT" \
     --sigma_max 80 \
     --offload_text_encoder_model --is_av_sample \
-    --controlnet_specs assets/sample_av_multi_control_spec.json
+    --controlnet_specs assets/sample_av_multi_control_spec.json \
+    --num_gpus $NUM_GPU
 ```
 
 You can also choose to run the inference on multiple GPUs as follows:
@@ -153,13 +158,15 @@ Feel free to experiment with more specs. For example, the command below only use
 
 ```bash
 export PROMPT="The video is captured from a camera mounted on a car. The camera is facing forward. The video showcases a scenic golden-hour drive through a suburban area, bathed in the warm, golden hues of the setting sun. The dashboard camera captures the play of light and shadow as the sun’s rays filter through the trees, casting elongated patterns onto the road. The streetlights remain off, as the golden glow of the late afternoon sun provides ample illumination. The two-lane road appears to shimmer under the soft light, while the concrete barrier on the left side of the road reflects subtle warm tones. The stone wall on the right, adorned with lush greenery, stands out vibrantly under the golden light, with the palm trees swaying gently in the evening breeze. Several parked vehicles, including white sedans and vans, are seen on the left side of the road, their surfaces reflecting the amber hues of the sunset. The trees, now highlighted in a golden halo, cast intricate shadows onto the pavement. Further ahead, houses with red-tiled roofs glow warmly in the fading light, standing out against the sky, which transitions from deep orange to soft pastel blue. As the vehicle continues, a white sedan is seen driving in the same lane, while a black sedan and a white van move further ahead. The road markings are crisp, and the entire setting radiates a peaceful, almost cinematic beauty. The golden light, combined with the quiet suburban landscape, creates an atmosphere of tranquility and warmth, making for a mesmerizing and soothing drive."
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:=0}"
 export CHECKPOINT_DIR="${CHECKPOINT_DIR:=./checkpoints}"
-CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) python cosmos_transfer1/diffusion/inference/transfer.py \
+export NUM_GPU="${NUM_GPU:=1}"
+CUDA_HOME=$CONDA_PREFIX PYTHONPATH=$(pwd) torchrun --nproc_per_node=$NUM_GPU --nnodes=1 --node_rank=0 cosmos_transfer1/diffusion/inference/transfer.py \
     --checkpoint_dir $CHECKPOINT_DIR \
     --video_save_name output_video \
     --video_save_folder outputs/sample_av_hdmap_spec \
     --prompt "$PROMPT" \
     --offload_text_encoder_model --is_av_sample \
-    --controlnet_specs assets/sample_av_hdmap_spec.json
+    --controlnet_specs assets/sample_av_hdmap_spec.json \
+    --num_gpus $NUM_GPU
 ```
