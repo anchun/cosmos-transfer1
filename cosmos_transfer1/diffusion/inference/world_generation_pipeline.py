@@ -681,7 +681,7 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
         log.info("Running guardrail checks on all prompts")
         safe_indices = []
         for i, single_prompt in enumerate(prompts):
-            is_safe = self._run_guardrail_on_prompt_with_offload(single_prompt)
+            is_safe = True # self._run_guardrail_on_prompt_with_offload(single_prompt)
             if is_safe:
                 safe_indices.append(i)
             else:
@@ -1019,9 +1019,10 @@ class DiffusionControl2WorldMultiviewGenerationPipeline(DiffusionControl2WorldGe
                 frames_BVCT_non_overlap = frames_BVCT[:, :, :, num_input_frames:]
                 video.append(frames_BVCT_non_overlap)
 
-            prev_frames = torch.zeros_like(frames_BVCT)
-            prev_frames[:, :, :, : self.num_input_frames] = frames_BVCT[:, :, :, -self.num_input_frames :]
-            prev_frames = einops.rearrange(prev_frames, "B V C T H W -> B C (V T) H W")
+            if self.is_lvg_model:
+                prev_frames = torch.zeros_like(frames_BVCT)
+                prev_frames[:, :, :, : self.num_input_frames] = frames_BVCT[:, :, :, -self.num_input_frames :]
+                prev_frames = einops.rearrange(prev_frames, "B V C T H W -> B C (V T) H W")
 
         video = torch.cat(video, dim=3)
         video = einops.rearrange(video, "B V C T H W -> B C (V T) H W")

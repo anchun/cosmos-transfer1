@@ -287,14 +287,14 @@ def demo(cfg, control_inputs):
         cfg.is_lvg_model = False
         cfg.num_input_frames = 0
         checkpoint = BASE_t2w_7B_SV2MV_CHECKPOINT_AV_SAMPLE_PATH
-
+    
     # Initialize transfer generation model pipeline
     pipeline = DiffusionControl2WorldMultiviewGenerationPipeline(
         checkpoint_dir=cfg.checkpoint_dir,
         checkpoint_name=checkpoint,
         offload_network=cfg.offload_diffusion_transformer,
         offload_text_encoder_model=cfg.offload_text_encoder_model,
-        offload_guardrail_models=cfg.offload_guardrail_models,
+        offload_guardrail_models=True,
         guidance=cfg.guidance,
         num_steps=cfg.num_steps,
         fps=cfg.fps,

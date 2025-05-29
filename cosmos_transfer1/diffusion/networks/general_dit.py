@@ -521,8 +521,8 @@ class GeneralDIT(nn.Module):
             inputs["rope_emb_L_1_1_D"],
             inputs["adaln_lora_B_3D"],
             inputs["original_shape"],
-            inputs["regional_contexts"],
-            inputs["region_masks"],
+            inputs.get("regional_contexts"),
+            inputs.get("region_masks"),
         )
 
         extra_pos_emb_B_T_H_W_D_or_T_H_W_B_D = inputs["extra_pos_emb_B_T_H_W_D_or_T_H_W_B_D"]
