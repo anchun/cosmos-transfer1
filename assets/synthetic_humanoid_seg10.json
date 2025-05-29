@@ -1,8 +1,0 @@
-{
-    "prompt": "A humanoid robot is walking in a futuristic lounge with soft ambient lighting. The floor is covered with polished basalt tiles, and the steps on the ground are made of frosted glass. The wall, made of brushed aluminum panels, features a holographic display showcasing the number '51' along with abstract robotic blueprints.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "prompt": "A cutting-edge robot walks confidently in a room lit by warm, golden light. The floor is made of high-gloss black tiles, and the obstacles include sleek white marble steps. The wall is adorned with a digital art piece that integrates futuristic circuitry, with the number '51' subtly highlighted on a textured plaster surface.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

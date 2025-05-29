@@ -1,8 +1,0 @@
-{
-    "prompt": "A quadruped robotic dog is trotting through a room illuminated by warm, ambient lighting. The floor is finished with polished quartz tiles, and scattered obstacles are crafted from reclaimed teak wood. An exposed brick wall features an intricate mural where the number '51' is seamlessly integrated with futuristic motifs.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

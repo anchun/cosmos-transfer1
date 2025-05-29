@@ -1,0 +1,8 @@
+{
+    "prompt": "A red metallic kung fu robot is practicing Chinese martial arts indoors. The room is illuminated by vintage yellowish light. The floor is made of marble, with a few classical pieces of furniture scattered nearby. The walls are made of gray bricks, decorated with several paintings.",
+    "input_video_path" : "assets/humanoid_kongfu_G1_rgb.mp4",
+    "seg": {
+        "input_control": "assets/humanoid_kongfu_G1_segmentation.mp4",
+        "control_weight": 0.95
+    }
+}

@@ -1,8 +1,0 @@
-{
-    "prompt": "A sleek robot strolls through a modern room illuminated by cool blue LED lights. The floor is covered in dark polished marble, with irregular obstacles constructed from stainless steel. One of the wall artworks boldly features the number '51' in a digital font on a glass-paneled wall.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

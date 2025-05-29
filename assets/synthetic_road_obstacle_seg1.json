@@ -1,0 +1,8 @@
+{
+    "prompt": "This video is captured from the front-facing camera of an autonomous vehicle. The vehicle is following a white sedan driving on a city road. In the last few seconds of the video, the white sedan shifts into the right lane. At that moment, a tire obstacle appears directly in front of the autonomous vehicle. The weather is clear and sunny, and the time is around 11 AM. The road surface is asphalt with clearly marked lane lines. There are trees and modern-style buildings on both sides of the road.",
+    "input_video_path" : "assets/synthetic_road_obstacle_rgb.mp4",
+    "seg": {
+        "input_control": "assets/synthetic_road_obstacle_segmentation.mp4",
+        "control_weight": 0.8
+    }
+}

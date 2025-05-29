@@ -1,8 +1,0 @@
-{
-    "prompt": "A modern robot is calmly walking in a room with serene, warm lighting. The floor is laid with polished limestone, and the obstacles are smooth basalt steps. The sleek glass-paneled wall is decorated with digital prints, one of which strikingly highlights the numeral '51' in a bold, contemporary font.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

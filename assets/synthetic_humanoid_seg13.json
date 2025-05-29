@@ -1,8 +1,0 @@
-{
-    "prompt": "A humanoid robot is walking in a high-tech research lab illuminated by bright white LED panels. The floor is a seamless epoxy resin surface, and the ground obstacles consist of modular plastic platforms. On a large interactive digital screen embedded in the steel-reinforced wall, the number '51' glows among streams of real-time data visualizations.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

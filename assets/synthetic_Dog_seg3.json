@@ -1,8 +1,0 @@
-{
-    "prompt": "Inside a cozy, warmly lit room, a quadruped robotic dog is crawling across a carpeted floor with intricate Persian designs. The wooden steps are adorned with brass railings. The walls, covered in soft fabric panels, feature embroidered artwork depicting legendary automata, robotic animals, and early cybernetic experiments.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

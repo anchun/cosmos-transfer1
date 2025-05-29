@@ -1,8 +1,0 @@
-{
-    "prompt": "A quadruped robotic dog is moving gracefully in a room with soft, diffused golden lighting. The floor is composed of smooth limestone, and the obstacles on the ground are carved from natural marble. The wall, featuring a textured concrete finish, is decorated with a large-scale digital painting in which the number '51' is dynamically interwoven with cybernetic imagery.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "prompt": "A nimble robot paces through an art gallery-like room with diffused, soft lighting. The floor is a mosaic of colorful tiles, and the obstacles are sculptural installations crafted from reclaimed wood. On a pristine white wall, a modern abstract painting boldly presents the digit '51' amidst bursts of vibrant color.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

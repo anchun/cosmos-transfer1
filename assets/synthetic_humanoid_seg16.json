@@ -1,8 +1,0 @@
-{
-    "prompt": "A humanoid robot is exploring a sci-fi control room illuminated by pulsating blue and red lights. The floor is constructed from reinforced glass with illuminated circuits beneath, and the obstacles on the ground are sleek titanium platforms. The metal wall is filled with dynamic holographic projections, prominently featuring the number '51' as part of an encrypted data feed.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

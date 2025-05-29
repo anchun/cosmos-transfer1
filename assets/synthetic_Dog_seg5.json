@@ -1,8 +1,0 @@
-{
-    "prompt": "A quadruped robotic dog crawls through a sunlit room with large open windows. The floor is covered with natural bamboo planks, and the ground steps are made of recycled concrete blocks. The walls, painted in soft earth tones, are adorned with watercolor paintings of robotic wildlife, nature-inspired drones, and eco-friendly autonomous vehicles.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

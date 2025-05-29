@@ -1,8 +1,0 @@
-{
-    "prompt": "A quadruped robotic dog is pacing through a modern, minimalist room bathed in soft white light. The floor is laid with smooth epoxy resin, and the obstacles consist of geometric sculptures made from transparent acrylic. A feature wall of brushed aluminum displays a minimalist art piece where the number '51' is elegantly embedded within abstract lines.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

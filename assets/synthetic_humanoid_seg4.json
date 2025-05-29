@@ -1,8 +1,0 @@
-{
-    "prompt": "A sophisticated robot advances through an industrial-style room with harsh fluorescent lighting. The floor is composed of rugged concrete, with scattered steel beam obstacles. On one brick wall, a graffiti-style mural features the number '51' alongside vibrant cybernetic symbols.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

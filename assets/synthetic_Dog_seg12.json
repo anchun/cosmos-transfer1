@@ -1,8 +1,0 @@
-{
-    "prompt": "A quadruped robotic dog is navigating a spacious room under soft natural light filtering through large windows. The floor comprises warm-toned oak planks, and the obstacles on the ground are composed of artfully arranged concrete blocks. A smooth plaster wall is adorned with an abstract painting that prominently features the number '51' amid swirling patterns.",
-    "input_video_path" : "assets/synthetic_Dog_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_Dog_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}

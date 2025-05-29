@@ -1,8 +1,0 @@
-{
-    "prompt": "A state-of-the-art robot traverses a spacious room under dynamic LED lighting. The floor is finished with elegant terrazzo, and the obstacles consist of patterned ceramic tiles. On a feature wall constructed from reclaimed brick, an eclectic collage of artworks prominently displays the number '51' in a futuristic typographic style.",
-    "input_video_path" : "assets/synthetic_humanoid_rgb.mp4",
-    "seg": {
-        "input_control": "assets/synthetic_humanoid_segmentation.mp4",
-        "control_weight": 1.0
-    }
-}
