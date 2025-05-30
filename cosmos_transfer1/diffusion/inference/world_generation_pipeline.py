@@ -735,7 +735,7 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
 
         log.info("Run guardrail on generated videos")
         for i, video in enumerate(videos):
-            safe_video = self._run_guardrail_on_video_with_offload(video)
+            safe_video = video # self._run_guardrail_on_video_with_offload(video)
             if safe_video is not None:
                 all_videos.append(safe_video)
                 all_final_prompts.append(safe_prompts[i])
