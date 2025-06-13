@@ -752,9 +752,12 @@ class DiffusionControl2WorldMultiviewGenerationPipeline(DiffusionControl2WorldGe
         super(DiffusionControl2WorldMultiviewGenerationPipeline, self).__init__(*args, **kwargs)
         self.is_lvg_model = is_lvg_model
         self.n_clip_max = n_clip_max
+        self.model.n_views = 4   # 这个根据输入不同需要更改下【全局搜索n_views = 查看有哪些需要改的】
 
     def _run_tokenizer_decoding(self, sample: torch.Tensor):
         """Decode latent samples to video frames using the tokenizer decoder.
+
+        /root/src/cosmos-transfer1
 
         Args:
             sample: Latent tensor from diffusion model [B, C, T, H, W]
@@ -765,14 +768,34 @@ class DiffusionControl2WorldMultiviewGenerationPipeline(DiffusionControl2WorldGe
         """
         # Decode video
         video = (1.0 + self.model.decode(sample)).clamp(0, 2) / 2  # [B, 3, T, H, W]
+        # 为了防止后面代码报错导致前面算力白白消耗，加一个保存npy文件的步骤
+        try:
+            np.save('/root/src/cosmos-transfer1/outputs/simone_sample_av_multiview_demo/generated_video_ori.npy', video.to(torch.uint8).cpu().numpy())
+        except:
+            pass
         video_segments = einops.rearrange(video, "b c (v t) h w -> b c v t h w", v=self.model.n_views)
         grid_video = torch.stack(
-            [video_segments[:, :, i] for i in [1, 0, 2, 4, 3, 5]],
+            [video_segments[:, :, i] for i in [1, 0, 2, 3]],   #, 4, 5    # 改
             dim=2,
         )
-        grid_video = einops.rearrange(grid_video, "b c (h w) t h1 w1 -> b c t (h h1) (w w1)", h=2, w=3)
+        try:
+            grid_video = einops.rearrange(grid_video, "b c (h w) t h1 w1 -> b c t (h h1) (w w1)", h=2, w=3)
+        except:
+            print("Error with h=2, w=3, trying another h & w ...")
+            try:
+                grid_video = einops.rearrange(grid_video, "b c (h w) t h1 w1 -> b c t (h h1) (w w1)", h=2, w=2)
+            except:
+                grid_video = einops.rearrange(grid_video, "b c (h w) t h1 w1 -> b c t (h h1) (w w1)", h=1, w=self.model.n_views)
         grid_video = (grid_video[0].permute(1, 2, 3, 0) * 255).to(torch.uint8).cpu().numpy()
+        try:
+            np.save('/root/src/cosmos-transfer1/outputs/simone_sample_av_multiview_demo/generated_grid_video.npy', grid_video)
+        except:
+            pass
         video = (video[0].permute(1, 2, 3, 0) * 255).to(torch.uint8).cpu().numpy()
+        try:
+            np.save('/root/src/cosmos-transfer1/outputs/simone_sample_av_multiview_demo/generated_video_after_grid.npy', video)
+        except:
+            pass
 
         return [grid_video, video]
 
@@ -905,7 +928,9 @@ class DiffusionControl2WorldMultiviewGenerationPipeline(DiffusionControl2WorldGe
 
         num_new_generated_frames = self.num_video_frames - self.num_input_frames  # 57 - 9 = 48
         B, C, T, H, W = control_input.shape
+        print("===ori T===", T)
         T = T // self.model.n_views
+        print("======T, Total_T=======", T, total_T, self.model.n_views)
         assert T == total_T
         # Different from other examples, we use a different logic to determine total generated duration:
         # we check for the maximum number of clips that can be fit in to the duration of ctrl input and condition input

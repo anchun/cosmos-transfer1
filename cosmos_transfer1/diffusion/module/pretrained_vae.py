@@ -335,6 +335,7 @@ class BasePretrainedVideoTokenizer(ABC):
         max_dec_batch_size: int = 4,
     ):
         self._pixel_chunk_duration = pixel_chunk_duration
+        # self._pixel_chunk_duration = 7    # 强行指定一下【修改；要改一下】
         self._temporal_compress_factor = temporal_compress_factor
         self.max_enc_batch_size = max_enc_batch_size
         self.max_dec_batch_size = max_dec_batch_size
@@ -438,7 +439,7 @@ class BasePretrainedVideoTokenizer(ABC):
         # return self._latent_chunk_duration
         assert (self.pixel_chunk_duration - 1) % self.temporal_compression_factor == 0, (
             f"Pixel chunk duration {self.pixel_chunk_duration} is not divisible by latent chunk duration "
-            f"{self.latent_chunk_duration}"
+            f"{self.temporal_compression_factor}"
         )
         return (self.pixel_chunk_duration - 1) // self.temporal_compression_factor + 1
 

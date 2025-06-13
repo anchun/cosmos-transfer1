@@ -302,7 +302,7 @@ def demo(cfg, control_inputs):
         num_input_frames=cfg.num_input_frames,
         control_inputs=control_inputs,
         sigma_max=80.0,
-        num_video_frames=57,
+        num_video_frames=49,    # 改
         process_group=process_group,
         height=576,
         width=1024,

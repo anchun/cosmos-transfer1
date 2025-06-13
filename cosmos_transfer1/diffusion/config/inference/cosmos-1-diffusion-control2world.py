@@ -164,7 +164,7 @@ def make_ctrlnet_config_7b_mv(
                 project="cosmos_ctrlnet1",
             ),
             model=dict(
-                n_views=6,
+                n_views=4,
                 base_load_from=dict(
                     load_path=f"checkpoints/{BASE_t2w_7B_SV2MV_CHECKPOINT_AV_SAMPLE_PATH}"
                     if t2w
@@ -178,7 +178,7 @@ def make_ctrlnet_config_7b_mv(
                     )
                 ),
                 net=L(MultiViewVideoExtendGeneralDIT)(
-                    n_views=6,
+                    n_views=4,
                     n_views_emb=7,
                     camera_condition_dim=6,
                     add_repeat_frame_embedding=True,
@@ -189,7 +189,7 @@ def make_ctrlnet_config_7b_mv(
                     in_channels=16,
                     hint_channels=16,
                     num_blocks=28,
-                    n_views=6,
+                    n_views=4,
                     n_views_emb=7,
                     camera_condition_dim=6,
                     add_repeat_frame_embedding=True,
@@ -200,7 +200,8 @@ def make_ctrlnet_config_7b_mv(
                 ),
                 tokenizer=dict(
                     video_vae=dict(
-                        pixel_chunk_duration=57,
+                        # pixel_chunk_duration=57,
+                        pixel_chunk_duration=49,
                     )
                 ),
             ),

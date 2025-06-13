@@ -407,6 +407,7 @@ def get_video_batch_for_multiview_model(
         frame_repeat[-1] = frame_repeat_negative_condition
         frame_repeat[-2] = frame_repeat_negative_condition
         raw_video_batch["frame_repeat"] = frame_repeat.unsqueeze(0).to(dtype=torch.bfloat16).cuda()
+    print("===okok===",n_views, int(num_video_frames / n_views))
     state_shape = [
         model.tokenizer.channel,
         model.tokenizer.get_latent_num_frames(int(num_video_frames / n_views)) * n_views,

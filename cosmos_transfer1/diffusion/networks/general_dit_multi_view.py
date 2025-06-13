@@ -55,6 +55,8 @@ class MultiViewGeneralDIT(GeneralDIT):
         if kwargs.get("add_augment_sigma_embedding", None) is not None:
             self.add_augment_sigma_embedding = kwargs.pop("add_augment_sigma_embedding")
 
+        n_views = 4  # 要改一下【全局搜索n_views = 查看有哪些需要改的】
+        
         self.n_views = n_views
         if n_views_emb < 0:
             self.n_views_emb = n_views
